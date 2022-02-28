@@ -3,6 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
-    background-color: rgb(241, 0, 0);
+.title {
+    letter-spacing: 2px;
+  }
+.rongila {
+  color: red;
+}
+#wrong-message{
+    display: none;
 }
