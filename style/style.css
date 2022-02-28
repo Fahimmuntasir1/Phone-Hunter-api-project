@@ -4,11 +4,15 @@
   box-sizing: border-box;
 }
 .title {
-    letter-spacing: 2px;
-  }
+  letter-spacing: 2px;
+}
 .rongila {
   color: red;
 }
-#wrong-message{
-    display: none;
+#wrong-message {
+  display: none;
+}
+#spinner {
+  display: none;
+  text-align: center;
 }
