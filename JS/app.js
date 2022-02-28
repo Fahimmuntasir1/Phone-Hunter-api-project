@@ -4,8 +4,8 @@ const searchButton = () => {
   const inputField = document.getElementById("input-field");
   const inputValue = inputField.value;
   inputField.value = "";
-  if (inputValue == "" || inputValue == "number") {
-      alert('dfdkj')
+  if (inputValue == "") {
+    document.getElementById("wrong-message").style.display = "block";
   } else {
     const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`;
     fetch(url)
@@ -14,6 +14,7 @@ const searchButton = () => {
         if (data.data.length == 0) {
           document.getElementById("spinner").style.display = "block";
           document.getElementById("wrong-message").style.display = "block";
+          document.getElementById("details-info").innerHTML = "";
         } else {
           getPhonesData(data.data);
           document.getElementById("wrong-message").style.display = "none";
@@ -47,6 +48,7 @@ const detailsBtn = (detailsCode) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => showDetailsInfo(data.data));
+  document.getElementById("details-info").innerHTML = "";
 };
 
 const showDetailsInfo = (information) => {
@@ -56,10 +58,10 @@ const showDetailsInfo = (information) => {
   const releaseDate = document.getElementById("release-date");
   div.className = "row g-0";
   div.innerHTML = `
-  <div class="col-md-4">
-  <img src="${information.image}" class="img-fluid rounded-start" alt="...">
+  <div class="col-md-4 col-sm-12 text-center">
+  <img src="${information.image}" class="img-fluid rounded-start " alt="...">
 </div>
-<div class="col-md-8">
+<div class="col-md-8 col-sm-12">
   <div class="card-body">
       <h5 class="card-title">${information.name}</h5>
       <p id="release-date" class="text-muted">${information.releaseDate}</p>
