@@ -1,9 +1,14 @@
 const searchButton = () => {
+  // clear
   document.getElementById("founded-results").textContent = "";
+  document.getElementById("details-info").innerHTML = "";
+  //spinner
   document.getElementById("spinner").style.display = "block";
+  //input field
   const inputField = document.getElementById("input-field");
   const inputValue = inputField.value;
   inputField.value = "";
+  // fetch with error message
   if (inputValue == "") {
     document.getElementById("wrong-message").style.display = "block";
   } else {
@@ -23,6 +28,7 @@ const searchButton = () => {
       });
   }
 };
+// display phone results
 const getPhonesData = (allPhones) => {
   allPhones.forEach((phone) => {
     // console.log(phone);
@@ -31,18 +37,18 @@ const getPhonesData = (allPhones) => {
     div.className = "col";
     div.innerHTML = `
       <div class="card">
-          <img src="${phone.image}" class="card-img-top" alt="phone">
+          <img src="${phone.image}" class="card-img-top m-auto w-50 p-2" alt="phone">
           <div class="card-body">
               <h5 class="card-title">${phone.phone_name}</h5>
               <p class="fw-bold fs-5">Brand: ${phone.brand}</p>
-              <button onclick="detailsBtn('${phone.slug}')" class="btn btn-info" type="button">Details</button>
+              <button onclick="detailsBtn('${phone.slug}')" class="btn btn-primary" type="button">Details</button>
           </div>
       </div>
     `;
     displayPhones.appendChild(div);
   });
 };
-
+// fetch details info
 const detailsBtn = (detailsCode) => {
   const url = `https://openapi.programming-hero.com/api/phone/${detailsCode}`;
   fetch(url)
@@ -50,22 +56,22 @@ const detailsBtn = (detailsCode) => {
     .then((data) => showDetailsInfo(data.data));
   document.getElementById("details-info").innerHTML = "";
 };
-
+// show details info
 const showDetailsInfo = (information) => {
   console.log(information);
   const displayInfo = document.getElementById("details-info");
   const div = document.createElement("div");
   const releaseDate = document.getElementById("release-date");
-  div.className = "row g-0";
+  div.className = "row g-0 p-2";
   div.innerHTML = `
   <div class="col-md-4 col-sm-12 text-center">
-  <img src="${information.image}" class="img-fluid rounded-start " alt="...">
+  <img src="${information.image}" class="img-fluid rounded-start " width="75%" alt="...">
 </div>
 <div class="col-md-8 col-sm-12">
   <div class="card-body">
       <h5 class="card-title">${information.name}</h5>
       <p id="release-date" class="text-muted">${information.releaseDate}</p>
-      <p>Main Features: <b>Chipset:</b> ${information.mainFeatures.chipSet}, <b>Display-Size:</b> ${information.mainFeatures.displaySize}, <b>Memory:</b> ${information.mainFeatures.memory}</p>
+      <p> <span class="fs-5 fw-bold text-muted">Main Features:</span> </br> <b>Chipset:</b> ${information.mainFeatures.chipSet},</br> <b>Display-Size:</b> ${information.mainFeatures.displaySize},</br> <b>Memory:</b> ${information.mainFeatures.memory}</p>
       
   </div>
 </div>
