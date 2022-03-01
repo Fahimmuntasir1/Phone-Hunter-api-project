@@ -21,7 +21,7 @@ const searchButton = () => {
           document.getElementById("wrong-message").style.display = "block";
           document.getElementById("details-info").innerHTML = "";
         } else {
-          getPhonesData(data.data);
+          getPhonesData(data.data.slice(0, 20));
           document.getElementById("wrong-message").style.display = "none";
           document.getElementById("spinner").style.display = "none";
         }
@@ -30,6 +30,7 @@ const searchButton = () => {
 };
 // display phone results
 const getPhonesData = (allPhones) => {
+  // console.log(allPhones);
   allPhones.forEach((phone) => {
     // console.log(phone);
     const displayPhones = document.getElementById("founded-results");
@@ -57,21 +58,35 @@ const detailsBtn = (detailsCode) => {
   document.getElementById("details-info").innerHTML = "";
 };
 // show details info
-const showDetailsInfo = (information) => {
-  console.log(information);
+const showDetailsInfo = (info) => {
+  console.log(info);
   const displayInfo = document.getElementById("details-info");
   const div = document.createElement("div");
-  const releaseDate = document.getElementById("release-date");
   div.className = "row g-0 p-2";
   div.innerHTML = `
   <div class="col-md-4 col-sm-12 text-center">
-  <img src="${information.image}" class="img-fluid rounded-start " width="75%" alt="...">
+  <img src="${
+    info.image
+  }" class="img-fluid rounded-start " width="75%" alt="...">
 </div>
 <div class="col-md-8 col-sm-12">
   <div class="card-body">
-      <h5 class="card-title">${information.name}</h5>
-      <p id="release-date" class="text-muted">${information.releaseDate}</p>
-      <p> <span class="fs-5 fw-bold text-muted">Main Features:</span> </br> <b>Chipset:</b> ${information.mainFeatures.chipSet},</br> <b>Display-Size:</b> ${information.mainFeatures.displaySize},</br> <b>Memory:</b> ${information.mainFeatures.memory}</p>
+      <h5 class="card-title">${info.name}</h5>
+      <p id="release-date" class="text-muted">${
+        info.releaseDate ? info.releaseDate : "no release date found"
+      }</p>
+      <p> <span class="fs-5 fw-bold text-muted">Main Features:</span> </br> <b>Chipset :</b> ${
+        info.mainFeatures.chipSet
+      },</br> <b>Display-Size : </b> ${
+    info.mainFeatures.displaySize
+  },</br> <b>Memory :</b> ${info.mainFeatures.memory},</br> <b>Sensors : </b> ${
+    info.mainFeatures.sensors
+  } </p>
+      <p> <b>Others Feature : </b> </br> Bluetooth : ${
+        info.others.Bluetooth
+      }, GPS : ${info.others.GPS}, NFC : ${info.others.NFC}, Radio : ${
+    info.others.Radio
+  }, USB : ${info.others.USB}, WLAN : ${info.others.WLAN}</p>
       
   </div>
 </div>
