@@ -64,32 +64,37 @@ const showDetailsInfo = (info) => {
   const div = document.createElement("div");
   div.className = "row g-0 p-2";
   div.innerHTML = `
-  <div class="col-md-4 col-sm-12 text-center">
-  <img src="${
-    info.image
-  }" class="img-fluid rounded-start " width="75%" alt="...">
-</div>
-<div class="col-md-8 col-sm-12">
-  <div class="card-body">
-      <h5 class="card-title">${info.name}</h5>
-      <p id="release-date" class="text-muted">${
-        info.releaseDate ? info.releaseDate : "no release date found"
-      }</p>
-      <p> <span class="fs-5 fw-bold text-muted">Main Features:</span> </br> <b>Chipset :</b> ${
-        info.mainFeatures.chipSet
-      },</br> <b>Display-Size : </b> ${
+        <div class="col-md-4 col-sm-12 text-center">
+        <img src="${
+          info.image
+        }" class="img-fluid rounded-start " width="75%" alt="...">
+      </div>
+      <div class="col-md-8 col-sm-12">
+        <div class="card-body">
+              <h5 class="card-title">${info.name}</h5>
+              <p id="release-date" class="text-muted">${
+                info.releaseDate ? info.releaseDate : "no release date found"
+              }</p>
+              <p> <span class="fs-5 fw-bold text-muted">Main Features:</span> </br> <b>Chipset :</b> ${
+                info.mainFeatures.chipSet
+              },</br> <b>Display-Size : </b> ${
     info.mainFeatures.displaySize
-  },</br> <b>Memory :</b> ${info.mainFeatures.memory},</br> <b>Sensors : </b> ${
-    info.mainFeatures.sensors
-  } </p>
-      <p> <b>Others Feature : </b> </br> Bluetooth : ${
-        info.others.Bluetooth
-      }, GPS : ${info.others.GPS}, NFC : ${info.others.NFC}, Radio : ${
+  },</br> <b>Memory :</b> ${
+    info.mainFeatures.memory
+  },</br> <b id="sensors">Sensors :</b> ${info.mainFeatures.sensors} </p>
+              <p> <b>Others Feature : </b> </br> Bluetooth : ${
+                info.others.Bluetooth
+              }, GPS : ${info.others.GPS}, NFC : ${info.others.NFC}, Radio : ${
     info.others.Radio
   }, USB : ${info.others.USB}, WLAN : ${info.others.WLAN}</p>
-      
-  </div>
-</div>
-  `;
+        </div>
+      </div>
+        `;
+
+  // const sensors = info.mainFeatures.sensors;
+  // for (const sensor of sensors) {
+  //   document.getElementById("sensors").innerText = sensor;
+  // }
+
   displayInfo.appendChild(div);
 };

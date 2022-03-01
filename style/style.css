@@ -16,3 +16,13 @@
   display: none;
   text-align: center;
 }
+.up-button {
+  border: none;
+  font-size: 30px;
+  text-decoration: none;
+  position: fixed;
+  float: right;
+  right: 100px;
+  bottom: 50px;
+  opacity: 50%;
+}
