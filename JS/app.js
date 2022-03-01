@@ -11,13 +11,14 @@ const searchButton = () => {
   // fetch with error message
   if (inputValue == "") {
     document.getElementById("wrong-message").style.display = "block";
+    document.getElementById("spinner").style.display = "none";
   } else {
     const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         if (data.data.length == 0) {
-          document.getElementById("spinner").style.display = "block";
+          document.getElementById("spinner").style.display = "none";
           document.getElementById("wrong-message").style.display = "block";
           document.getElementById("details-info").innerHTML = "";
         } else {
