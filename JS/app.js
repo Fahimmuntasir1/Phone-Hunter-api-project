@@ -74,14 +74,16 @@ const showDetailsInfo = (info) => {
         <div class="card-body">
               <h5 class="card-title">${info.name}</h5>
               <p id="release-date" class="text-muted">${
-                info.releaseDate ? info.releaseDate : "no release date found"
+                info.releaseDate ? info.releaseDate : "No release date found"
               }</p>
               <p> <span class="fs-5 fw-bold text-muted">Main Features:</span> </br> <b>Chipset :</b> ${
                 info.mainFeatures.chipSet
+                  ? info.mainFeatures.chipSet
+                  : "Unknown Chipset"
               },</br> <b>Display-Size : </b> ${
     info.mainFeatures.displaySize
   },</br> <b>Memory :</b> ${
-    info.mainFeatures.memory
+    info.mainFeatures.memory ? info.mainFeatures.memory : 'Not Found'
   },</br> <b id="sensors">Sensors :</b> ${info.mainFeatures.sensors} </p>
               <p> <b>Others Feature : </b> </br> Bluetooth : ${
                 info.others.Bluetooth
@@ -92,10 +94,6 @@ const showDetailsInfo = (info) => {
       </div>
         `;
 
-  // const sensors = info.mainFeatures.sensors;
-  // for (const sensor of sensors) {
-  //   document.getElementById("sensors").innerText = sensor;
-  // }
 
   displayInfo.appendChild(div);
 };
