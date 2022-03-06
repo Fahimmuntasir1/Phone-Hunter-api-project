@@ -86,10 +86,10 @@ const showDetailsInfo = (info) => {
     info.mainFeatures.memory ? info.mainFeatures.memory : 'Not Found'
   },</br> <b id="sensors">Sensors :</b> ${info.mainFeatures.sensors} </p>
               <p> <b>Others Feature : </b> </br> Bluetooth : ${
-                info.others.Bluetooth
-              }, GPS : ${info.others.GPS}, NFC : ${info.others.NFC}, Radio : ${
-    info.others.Radio
-  }, USB : ${info.others.USB}, WLAN : ${info.others.WLAN}</p>
+                info?.others?.Bluetooth|| 'not found'
+              }, GPS : ${info?.others?.GPS || 'not found'}, NFC : ${info?.others?.NFC||'not found'}, Radio : ${
+    info?.others?.Radio||'not found'
+  }, USB : ${info?.others?.USB||'not found'}, WLAN : ${info?.others?.WLAN||'not found'}</p>
         </div>
       </div>
         `;
